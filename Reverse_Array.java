@@ -16,8 +16,8 @@ public class Reverse_Array {
 
         // print an array using for-each loop
 
-        for (int a : arr1) {
-            System.out.print(a + " ");
+        for (int[] a : arr) {
+            System.out.println(Arrays.toString(a));
 
         }
         System.out.println();
