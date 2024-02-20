@@ -16,15 +16,45 @@ public class Reverse_Array {
 
         // print an array using for-each loop
 
-        for (int[] a : arr) {
-            System.out.println(Arrays.toString(a));
+        // for (int[] a : arr) {
+        // System.out.println(Arrays.toString(a));
 
+        // }
+        // System.out.println();
+
+        // before swaping
+        for (int i = 0; i < arr1.length; i++) {
+            System.out.print(arr1[i] + " ");
         }
         System.out.println();
 
+        reverse(arr1);
+
         // print an array using toString method
-        for (int i = 0; i < arr.length; i++) {
-            System.out.println(Arrays.toString(arr[i]));
+        // for (int i = 0; i < arr.length; i++) {
+        // System.out.println(Arrays.toString(arr[i]));
+        // }
+
+        // after the swaping
+
+        for (int i = 0; i < arr1.length; i++) {
+            System.out.print(arr1[i] + " ");
         }
+    }
+
+    static void reverse(int arr[]) {
+        int start = 0;
+        int end = arr.length - 1;
+        while (end > start) {
+            swap(arr, start, end);
+            start++;
+            end--;
+        }
+    }
+
+    static void swap(int arr[], int index1, int index2) {
+        int temp = arr[index1];
+        arr[index1] = arr[index2];
+        arr[index2] = temp;
     }
 }
