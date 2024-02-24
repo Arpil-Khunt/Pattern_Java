@@ -44,7 +44,7 @@ public class LinkedList {
 
     }
 
-    void addIndex(int data, int index) {
+    void addAtIndex(int data, int index) {
         if (head == null) {
             addFirst(data);
         }
@@ -61,12 +61,24 @@ public class LinkedList {
     // deletion at first
 
     public void deletionFirst() {
+        if (head == null) {
+            System.out.println("can't delete, because LL is empty");
+            return;
+        }
+        if (head.next == null) {
+            head = tail = null;
+            return;
+        }
         head = head.next;
         size--;
     }
 
     // deletion at any index
     public void deletionAtIndex(int index) {
+        if (index == 0) {
+            deletionFirst();
+            return;
+        }
         Node temp = head;
         for (int i = 1; i < index; i++) {
             temp = temp.next;
@@ -79,18 +91,24 @@ public class LinkedList {
 
     // deletion at end
     public void deletionLast() {
+        if (head == null) {
+            return;
+        }
+        if (head.next == null) {
+            head = tail = null;
+            return;
+        }
+
         Node temp = head;
         Node temp1 = temp;
-        Node temp2 = temp1;
-        while (temp != null) {
-            temp2 = temp1;
+
+        while (temp.next != null) {
+
             temp1 = temp;
             temp = temp.next;
         }
 
-        // temp = temp2;
-        // temp.next = null;
-        temp2.next = null;
+        temp1.next = null;
         size--;
 
     }
@@ -113,23 +131,35 @@ public class LinkedList {
         LinkedList ll = new LinkedList();
         ll.addFirst(45);
         ll.addFirst(46);
-        ll.addFirst(47);
-        ll.addFirst(48);
-        ll.addFirst(49);
+
         ll.addLast(44);
         ll.addLast(43);
-        ll.addIndex(50, 3);
-        ll.print();
-        System.out.println(ll.size);
-        ll.deletionFirst();
-        ll.print();
-        System.out.println(ll.size);
-        ll.deletionAtIndex(3);
-        ll.print();
-        System.out.println(ll.size);
+        // ll.deletionAtIndex(0);
+        // ll.deletionAtIndex(0);
+        // ll.deletionAtIndex(0);
+        // ll.deletionAtIndex(0);
+        // ll.deletionAtIndex(0);
+        // ll.deletionFirst();
+        ll.deletionLast();
+        ll.deletionLast();
+
+        ll.deletionLast();
+        ll.deletionLast();
         ll.deletionLast();
         ll.print();
-        System.out.println(ll.size);
+
+        // ll.addAtIndex(50, 3);
+        // ll.print();
+        // System.out.println(ll.size);
+        // ll.deletionFirst();
+        // ll.print();
+        // System.out.println(ll.size);
+        // ll.deletionAtIndex(3);
+        // ll.print();
+        // System.out.println(ll.size);
+        // ll.deletionLast();
+        // ll.print();
+        // System.out.println(ll.size);
 
     }
 }

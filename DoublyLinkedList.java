@@ -110,6 +110,10 @@ public class DoublyLinkedList {
         if (head == null) {
             return;
         }
+        if (head.prev == null) {
+            head = tail = null;
+            return;
+        }
         Node temp = head;
         Node temp1 = temp;
         while (temp.next != null) {
