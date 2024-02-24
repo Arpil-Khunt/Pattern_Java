@@ -1,17 +1,19 @@
 public class LinkedList {
-    static class Node {
+    int size;
+
+    class Node {
         int data;
         Node next;
-        static int size;
 
         public Node(int data) {
             this.data = data;
-
+            size++;
         }
 
         public Node(int data, Node node) {
             this.data = data;
             this.next = node;
+            size++;
         }
     }
 
@@ -22,24 +24,24 @@ public class LinkedList {
         Node newNode = new Node(data);
         if (head == null) {
             head = tail = newNode;
-            Node.size++;
+
             return;
         }
         newNode.next = head;
         head = newNode;
-        Node.size++;
+
     }
 
     void addLast(int data) {
         Node newNode = new Node(data);
         if (head == null) {
             head = tail = newNode;
-            Node.size++;
+
             return;
         }
         tail.next = newNode;
         tail = newNode;
-        Node.size++;
+
     }
 
     void addIndex(int data, int index) {
@@ -53,6 +55,43 @@ public class LinkedList {
         }
         Node newNode = new Node(data, temp.next);
         temp.next = newNode;
+
+    }
+
+    // deletion at first
+
+    public void deletionFirst() {
+        head = head.next;
+        size--;
+    }
+
+    // deletion at any index
+    public void deletionAtIndex(int index) {
+        Node temp = head;
+        for (int i = 1; i < index; i++) {
+            temp = temp.next;
+        }
+        Node temp1 = temp.next;
+
+        temp.next = temp1.next;
+        size--;
+    }
+
+    // deletion at end
+    public void deletionLast() {
+        Node temp = head;
+        Node temp1 = temp;
+        Node temp2 = temp1;
+        while (temp != null) {
+            temp2 = temp1;
+            temp1 = temp;
+            temp = temp.next;
+        }
+
+        // temp = temp2;
+        // temp.next = null;
+        temp2.next = null;
+        size--;
 
     }
 
@@ -81,7 +120,16 @@ public class LinkedList {
         ll.addLast(43);
         ll.addIndex(50, 3);
         ll.print();
-        System.out.println(Node.size);
+        System.out.println(ll.size);
+        ll.deletionFirst();
+        ll.print();
+        System.out.println(ll.size);
+        ll.deletionAtIndex(3);
+        ll.print();
+        System.out.println(ll.size);
+        ll.deletionLast();
+        ll.print();
+        System.out.println(ll.size);
 
     }
 }
