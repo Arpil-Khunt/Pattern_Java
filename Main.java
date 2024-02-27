@@ -1,19 +1,29 @@
 public class Main {
 
     public static void main(String args[]) {
-        CustomStack stack = new CustomStack(5);
-        stack.push(55);
-        stack.push(56);
-        stack.push(57);
-        stack.push(58);
-        stack.push(59);
-        stack.push(60);
-        System.out.println(stack.peek());
-        System.out.println(stack.pop());
-        System.out.println(stack.peek());
-        // stack.pop();
-    }
+        // CustomStack stack = new CustomStack(5);
+        // stack.push(55);
+        // stack.push(56);
+        // stack.push(57);
+        // stack.push(58);
+        // stack.push(59);
+        // stack.push(60);
+        // System.out.println(stack.peek());
+        // System.out.println(stack.pop());
+        // System.out.println(stack.peek());
+        // // stack.pop();
 
+        DynamikStack stack1 = new DynamikStack(5);
+        stack1.push(55);
+        stack1.push(56);
+        stack1.push(57);
+        stack1.push(58);
+        stack1.push(59);
+        stack1.push(60);
+        stack1.push(61);
+        stack1.push(62);
+        System.out.println(stack1.peek());
+    }
 }
 
 class CustomStack {
@@ -60,5 +70,30 @@ class CustomStack {
 
     public boolean isEmpty() {
         return ptr == -1;
+    }
+}
+
+class DynamikStack extends CustomStack {
+
+    public DynamikStack() {
+        super();
+    }
+
+    public DynamikStack(int size) {
+        super(size);
+    }
+
+    @Override
+    public boolean push(int value) {
+        if (this.isFull()) {
+            int[] temp = new int[data.length * 2];
+            // copy previous data item in new data
+
+            for (int i = 0; i < data.length; i++) {
+                temp[i] = data[i];
+            }
+            data = temp;
+        }
+        return super.push(value);
     }
 }
