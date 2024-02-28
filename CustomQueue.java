@@ -64,7 +64,8 @@ public class CustomQueue {
     }
 
     public static void main(String args[]) throws Exception {
-        CustomQueue queue = new CustomQueue(5);
+        // CustomQueue queue = new CustomQueue(5);
+        DynamicQueue queue = new DynamicQueue(5);
         queue.insert(62);
         queue.insert(60);
         queue.insert(58);
@@ -75,5 +76,30 @@ public class CustomQueue {
         System.out.println("Front : " + queue.front());
         System.out.println("Removed : " + queue.remove());
         System.out.println("Front : " + queue.front());
+    }
+}
+
+class DynamicQueue extends CustomQueue {
+    public DynamicQueue() {
+        super();
+    }
+
+    public DynamicQueue(int size) {
+        super(size);
+    }
+
+    @Override
+    public boolean insert(int item) {
+        if (this.isFull()) {
+            // double the size previous one
+            int[] temp = new int[data.length * 2];
+
+            // copy the previous item
+            for (int i = 0; i < end; i++) {
+                temp[i] = data[i];
+            }
+            data = temp;
+        }
+        return super.insert(item);
     }
 }
