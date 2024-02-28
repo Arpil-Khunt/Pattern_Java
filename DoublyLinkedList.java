@@ -110,7 +110,7 @@ public class DoublyLinkedList {
         if (head == null) {
             return;
         }
-        if (head.prev == null) {
+        if (head.next == null) {
             head = tail = null;
             return;
         }
